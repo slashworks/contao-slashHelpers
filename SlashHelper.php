@@ -51,6 +51,11 @@ class SlashHelper extends Controller
     }
 
     /**
+     * Prevent cloning of the object (Singleton)
+     */
+    final public function __clone() {}
+
+    /**
      * generate mootools template
      * @param $tplName
      * @param array $tplVars
