@@ -38,6 +38,7 @@ class SlashHelper extends Controller
      */
     static protected $instance = null;
 
+
     /**
      * Singleton constructor
      * @return SlashHelper
@@ -50,10 +51,12 @@ class SlashHelper extends Controller
         return static::$instance;
     }
 
+
     /**
      * Prevent cloning of the object (Singleton)
      */
     final public function __clone() {}
+
 
     /**
      * generate mootools template
@@ -82,6 +85,7 @@ class SlashHelper extends Controller
         $GLOBALS['TL_MOOTOOLS'][] = $tpl->parse();
     }
 
+
     /**
      * Adds a javascript file to the head
      * @param $path
@@ -99,6 +103,7 @@ class SlashHelper extends Controller
         }
     }
 
+
     /**
      * Adds a css file to the head
      * @param $path
@@ -115,6 +120,7 @@ class SlashHelper extends Controller
             throw new Exception('ERROR: Parameter 1 of method '.__METHOD__.' must be a string');
         }
     }
+
 
     /**
      * Generates a wildcard Template for Backend
@@ -143,6 +149,7 @@ class SlashHelper extends Controller
         }
     }
     
+    
     /**
      * getTheImagePath from id
      * @param $fileId
@@ -164,13 +171,20 @@ class SlashHelper extends Controller
         {
             return '';
         }
-
-        if (!is_numeric($fileId))
+		
+		
+		/**
+		  * after update to cto 3.2 the uuid is not numeric
+		  *
+		 */
+		/*
+		if (!is_numeric($fileId))
         {
             return '<p class="error">'.$GLOBALS['TL_LANG']['ERR']['version2format'].'</p>';
         }
-
-        $objFile = FilesModel::findByPk($fileId);
+		*/
+		
+        $objFile = FilesModel::findByUuid($fileId);
 
         if ($objFile === null || !is_file(TL_ROOT . '/' . $objFile->path))
         {
@@ -179,6 +193,7 @@ class SlashHelper extends Controller
 
         return $objFile->path;
     }
+    
     
     /**
      * getUrl by Page Id
