@@ -10,8 +10,8 @@ Add CSS and JS files to the <head>
 
 #### addCSS ####
 
-@param (string) Path to the css file
-@param (boolen) optional combine with contao css file or not
+- @param (string) Path to the css file
+- @param (boolen) optional combine with contao css file or not
 
 ```php
 \SlashHelper\HelperAssets::addCSS('path/to/my/css/style.css');
@@ -19,8 +19,8 @@ Add CSS and JS files to the <head>
 
 #### addJS ####
 
-@param (string) Path to the javascript file
-@param (boolen) optional combine with contao js file or not
+- @param (string) Path to the javascript file
+- @param (boolen) optional combine with contao js file or not
 
 ```php
 \SlashHelper\HelperAssets::addJS('path/to/my/js/style.css');
