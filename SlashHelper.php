@@ -171,27 +171,21 @@ class SlashHelper extends Controller
         {
             return '';
         }
-		
-		
-		/**
-		  * after update to cto 3.2 the uuid is not numeric
-		  *
-		 */
-		/*
-		if (!is_numeric($fileId))
-        {
-            return '<p class="error">'.$GLOBALS['TL_LANG']['ERR']['version2format'].'</p>';
-        }
-		*/
-		
-        $objFile = FilesModel::findByUuid($fileId);
 
-        if ($objFile === null || !is_file(TL_ROOT . '/' . $objFile->path))
-        {
-            return '';
-        }
+        $objModel = FilesModel::findByUuid($fileId);
 
-        return $objFile->path;
+        if ($objModel === null)
+        {
+            if (!\Validator::isUuid($fileId))
+            {
+                return '<p class="error">'.$GLOBALS['TL_LANG']['ERR']['version2format'].'</p>';
+            }
+        }
+        elseif (is_file(TL_ROOT . '/' . $objModel->path))
+        {
+
+            return $objModel->path;
+        }
     }
     
     
