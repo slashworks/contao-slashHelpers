@@ -23,7 +23,7 @@ Add CSS and JS files to the <head>
 - @param (boolen) optional combine with contao js file or not
 
 ```php
-\SlashHelper\HelperAssets::addJS('path/to/my/js/style.css');
+\SlashHelper\HelperAssets::addJS('path/to/my/js/style.js');
 ```
 
 ### Dca ###
