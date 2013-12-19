@@ -16,7 +16,7 @@
  */
 ClassLoader::addNamespaces(array
 (
-	'SW',
+	'SlashHelper',
 ));
 
 
@@ -25,6 +25,11 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
-	'SW\DcaHelper'   => 'system/modules/slashHelpers/DcaHelper.php',
-	'SW\SlashHelper' => 'system/modules/slashHelpers/SlashHelper.php',
+	'SlashHelper\SlashHelper'   => 'system/modules/slashHelpers/classes/SlashHelper.php',
+	'SlashHelper\HelperFile'   => 'system/modules/slashHelpers/classes/HelperFile.php',
+	'SlashHelper\HelperDca'   => 'system/modules/slashHelpers/classes/HelperDca.php',
+	'SlashHelper\HelperAssets'   => 'system/modules/slashHelpers/classes/HelperAssets.php',
+	'SlashHelper\HelperTemplate'   => 'system/modules/slashHelpers/classes/HelperTemplate.php',
+	'SlashHelper\HelperUrl'   => 'system/modules/slashHelpers/classes/HelperUrl.php'
+
 ));
