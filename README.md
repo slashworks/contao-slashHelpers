@@ -129,6 +129,52 @@ add a new palette to dca item
 
 ### File ###
 
+#### getPath ####
+
+Get a filepath by id.
+
+- @param (integer) 
+
+```php
+\SlashHelper\HelperFile::getPath(20);
+```
+
+
 ### Template ###
 
+#### mootools ####
+
+Generate a mootools template.
+
+- @param (string) define the template name
+- @param (array) add template vars
+
+```php
+\SlashHelper\HelperTemplate::mootools('moo_myTpl', array(
+	"tplvar1" => 'A nice template var',
+	"tplvar2" => 'Another nice template var',
+));
+```
+
+#### wildcard ####
+
+Generate a backend wildcard template.
+
+- @param (string) add a text for the wildcard between ### HERE ###
+- @param (string) optional add a title to the wildcard template
+
+```php
+\SlashHelper\HelperTemplate::wildcard('My Awesome Backend Wildcard Text', 'A optional title');
+```
+
 ### Url ###
+
+#### fromPageId ####
+
+Get a frontend url by the page id
+
+- @param (int) page id
+
+```php
+\SlashHelper\HelperUrl::wildcard(3);
+```
