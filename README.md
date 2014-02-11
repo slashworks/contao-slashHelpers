@@ -176,5 +176,5 @@ Get a frontend url by the page id
 - @param (int) page id
 
 ```php
-\SlashHelper\HelperUrl::wildcard(3);
+\SlashHelper\HelperUrl::fromPageId(3);
 ```
