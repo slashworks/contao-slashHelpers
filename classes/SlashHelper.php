@@ -6,7 +6,7 @@
  * Copyright (C) 2005-2012 Leo Feyer
  *
  * @package SlashHelpers
- * @link    http://www.borowiakziehe.de
+ * @link    http://www.slash-works.de
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
@@ -19,13 +19,14 @@ namespace SlashHelper;
 use Controller;
 
 /**
- * Class CtoTplHelper
+ * Class SlashHelper
  *
- * Static helper class for templates
- * @copyright  Joe Ray Gregory 2012
- * @author     Joe Ray Gregory <http://www.borowiakziehe.de>
- * @package    BoziHelpers
+ * Singletone base for slashHelpers
+ * @copyright  Joe Ray Gregory 2012 - 2014
+ * @author     Joe Ray Gregory <http://www.slash-works.de>
+ * @package    SlashHelpers
  */
+ 
 class SlashHelper extends Controller
 {
 
