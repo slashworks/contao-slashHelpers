@@ -69,12 +69,12 @@ class HelperDca extends \Controller {
 
         if($toReplaceStr && is_string($toReplaceStr)) {
 
-            $GLOBALS['TL_DCA'][self::$table]['palettes'][$palette] = str_replace
-            (
-                $toReplaceStr,
-                $newItemStr,
-                $GLOBALS['TL_DCA'][self::$table]['palettes'][$palette]
-            );
+
+            $pos = strpos($GLOBALS['TL_DCA'][self::$table]['palettes'][$palette],$toReplaceStr);
+
+            if ($pos !== false) {
+                $GLOBALS['TL_DCA'][self::$table]['palettes'][$palette] = substr_replace($GLOBALS['TL_DCA'][self::$table]['palettes'][$palette],$toReplaceStr.$newItemStr,$pos,strlen($toReplaceStr));
+            }
 
         } else {
 
