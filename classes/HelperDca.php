@@ -187,4 +187,43 @@ class HelperDca extends \Controller {
         return $this;
 
     }
+    
+        /**
+     * update the options of a field. You can pass three strings (f.E. "fieldName", "inputType", "text") or a string and an array to edit multiple attributes.
+     * @param string $field
+     * @param mixed $keyValArr
+     * @return $this
+     */
+
+    public function updateField($field, $keyValArr)
+
+    {
+
+        $numArgs = func_num_args();
+
+        if(is_string($keyValArr) && $numArgs > 3)
+
+        {
+
+            $GLOBALS['TL_DCA'][self::$table]['fields'][$field][func_get_arg(1)] = func_get_arg(2);
+
+        }
+
+        else if(is_array($keyValArr) && $numArgs == 2)
+
+        {
+
+            foreach($keyValArr as $key => $val)
+
+            {
+
+                $GLOBALS['TL_DCA'][self::$table]['fields'][$field][$key] = $val;
+
+            }
+
+        }
+
+        return $this;
+
+    }
 }
