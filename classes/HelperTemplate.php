@@ -12,6 +12,9 @@
 namespace SlashHelper;
 
 
+use Contao\BackendTemplate;
+use Contao\FrontendTemplate;
+
 class HelperTemplate extends SlashHelper
 {
 
@@ -21,25 +24,26 @@ class HelperTemplate extends SlashHelper
      * @param array $tplVars
      * @throws Exception
      */
+
     public static function mootools($tplName, $tplVars = array())
     {
-        if(is_string($tplName))
-        {
-            $tpl =  (TL_MODE === 'FE') ? new \FrontendTemplate($tplName) : new \BackendTemplate($tplName);
-            if($tplVars && is_array($tplVars) && count($tplVars) > 0)
-            {
-                foreach($tplVars as $key=>$val)
-                {
-                    $tpl->$key = $val;
-                }
-            }
-        }
-        else
-        {
-            throw new Exception('ERROR: Parameter 1 of method '.__METHOD__.' must be a string');
-        }
 
-        $GLOBALS['TL_MOOTOOLS'][] = $tpl->parse();
+        self::addJsTemplate('MOOTOOLS', $tplName, $tplVars);
+
+    }
+
+    /**
+     * generate jquery template
+     * @param $tplName
+     * @param array $tplVars
+     * @throws Exception
+     */
+
+    public static function jquery($tplName, $tplVars = array())
+    {
+
+        self::addJsTemplate('JQUERY', $tplName, $tplVars);
+
     }
 
 
@@ -70,5 +74,34 @@ class HelperTemplate extends SlashHelper
         }
     }
 
+    /**
+     * Generate js templates
+     * @param $type
+     * @param $tplName
+     * @param array $tplVars
+     * @throws Exception
+     */
 
+    private static function addJsTemplate($type, $tplName, $tplVars = array())
+    {
+
+        if(is_string($tplName))
+        {
+            $tpl =  (TL_MODE === 'FE') ? new \FrontendTemplate($tplName) : new \BackendTemplate($tplName);
+            if($tplVars && is_array($tplVars) && count($tplVars) > 0)
+            {
+                foreach($tplVars as $key=>$val)
+                {
+                    $tpl->$key = $val;
+                }
+            }
+        }
+        else
+        {
+            throw new Exception('ERROR: Parameter 1 of method '.__METHOD__.' must be a string');
+        }
+
+        $GLOBALS['TL_'.$type][] = $tpl->parse();
+
+    }
 } 

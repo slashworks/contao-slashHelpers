@@ -47,10 +47,10 @@ class HelperDca extends \Controller {
 
     public static function table($table)
     {
-        if (self::$_instance === null) {
+        //if (self::$_instance === null) {
             self::$_instance = new self;
             self::$table = $table;
-        }
+        //}
 
         return self::$_instance;
     }
@@ -69,16 +69,16 @@ class HelperDca extends \Controller {
 
         if($toReplaceStr && is_string($toReplaceStr)) {
 
-            $GLOBALS['TL_DCA'][self::$table]['palettes'][$palette] = str_replace
-            (
-                $toReplaceStr,
-                $newItemStr,
-                $GLOBALS['TL_DCA'][self::$table]['palettes'][$palette]
-            );
+
+            $pos = strpos($GLOBALS['TL_DCA'][self::$table]['palettes'][$palette],$toReplaceStr);
+
+            if ($pos !== false) {
+                $GLOBALS['TL_DCA'][self::$table]['palettes'][$palette] = substr_replace($GLOBALS['TL_DCA'][self::$table]['palettes'][$palette],$toReplaceStr.$newItemStr,$pos,strlen($toReplaceStr));
+            }
 
         } else {
 
-            $GLOBALS['TL_DCA'][self::$table ]['palettes'][$palette] = $GLOBALS['TL_DCA'][self::$table ]['palettes'][$palette].';'.$newItemStr;
+            $GLOBALS['TL_DCA'][self::$table]['palettes'][$palette] = $GLOBALS['TL_DCA'][self::$table]['palettes'][$palette].';'.$newItemStr;
 
         }
 
@@ -183,6 +183,45 @@ class HelperDca extends \Controller {
 
         if($addSelector)
             $this->addSelector(array($paletteName));
+
+        return $this;
+
+    }
+    
+        /**
+     * update the options of a field. You can pass three strings (f.E. "fieldName", "inputType", "text") or a string and an array to edit multiple attributes.
+     * @param string $field
+     * @param mixed $keyValArr
+     * @return $this
+     */
+
+    public function updateField($field, $keyValArr)
+
+    {
+
+        $numArgs = func_num_args();
+
+        if(is_string($keyValArr) && $numArgs > 3)
+
+        {
+
+            $GLOBALS['TL_DCA'][self::$table]['fields'][$field][func_get_arg(1)] = func_get_arg(2);
+
+        }
+
+        else if(is_array($keyValArr) && $numArgs == 2)
+
+        {
+
+            foreach($keyValArr as $key => $val)
+
+            {
+
+                $GLOBALS['TL_DCA'][self::$table]['fields'][$field][$key] = $val;
+
+            }
+
+        }
 
         return $this;
 

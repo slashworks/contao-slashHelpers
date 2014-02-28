@@ -14,9 +14,13 @@
 /**
  * Run in a custom namespace, so the class can be replaced
  */
-namespace SlashHelper;
+namespace SW;
 
 use Controller;
+use SlashHelper\HelperUrl;
+use SlashHelper\HelperAssets;
+use SlashHelper\HelperTemplate;
+use SlashHelper\HelperFile;
 
 /**
  * Class SlashHelper
@@ -70,7 +74,7 @@ class SlashHelper extends Controller
 
     public static function generateWildCardTpl($wildcard, $title=false)
     {
-        HelperTemplate::generateWildCardTpl($wildcard, $title);
+        HelperTemplate::wildcard($wildcard, $title);
     }
 
     public static function getImagePath($fileId)
