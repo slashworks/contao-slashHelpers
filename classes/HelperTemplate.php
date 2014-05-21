@@ -84,7 +84,6 @@ class HelperTemplate extends SlashHelper
 
     private static function addJsTemplate($type, $tplName, $tplVars = array())
     {
-<<<<<<< HEAD
 
         if(is_string($tplName))
         {
@@ -104,26 +103,5 @@ class HelperTemplate extends SlashHelper
 
         $GLOBALS['TL_'.$type][] = $tpl->parse();
 
-=======
-
-        if(is_string($tplName))
-        {
-            $tpl =  (TL_MODE === 'FE') ? new \FrontendTemplate($tplName) : new \BackendTemplate($tplName);
-            if($tplVars && is_array($tplVars) && count($tplVars) > 0)
-            {
-                foreach($tplVars as $key=>$val)
-                {
-                    $tpl->$key = $val;
-                }
-            }
-        }
-        else
-        {
-            throw new Exception('ERROR: Parameter 1 of method '.__METHOD__.' must be a string');
-        }
-
-        $GLOBALS['TL_'.$type][] = $tpl->parse();
-
->>>>>>> FETCH_HEAD
     }
 } 
