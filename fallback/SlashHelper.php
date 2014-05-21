@@ -74,7 +74,7 @@ class SlashHelper extends Controller
 
     public static function generateWildCardTpl($wildcard, $title=false)
     {
-        HelperTemplate::wildcard($wildcard, $title);
+        return HelperTemplate::wildcard($wildcard, $title);
     }
 
     public static function getImagePath($fileId)
